@@ -16,6 +16,9 @@ Dockerfile is at `./Dockerfile`
 
 ---
 ### Request body
+- Open Postman
+- Create a POST request on http://127.0.0.1:5000/api/nik
+- Sample of request body:
 ```
 {
     "nik": [
