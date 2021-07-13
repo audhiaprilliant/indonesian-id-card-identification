@@ -20,7 +20,7 @@ df = pd.read_csv('data/csv/Admin Area Code - ID.csv', sep = ',', dtype = {'code'
 # Main page
 @app.route('/', methods = ['GET'])
 def home():
-    return '''<h1>API for Indonesia ID Identification</h1>
+    return '''<h1>API for Indonesian ID Card Identification</h1>
 <p>Created by Audhi Aprilliant</p>'''
 
 # NIK Identification
