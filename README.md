@@ -22,69 +22,102 @@ Dockerfile is at `./Dockerfile`
 ```
 {
     "nik": [
-        "",
-        "",
-        ""
+        "1234567891234567"
     ],
-    "process": ""
+    "process": "full"
 }
 ```
 - `nik` contains list of ID card (KTP)
 - `process` as method how the ID card information will be returned. You can choose `limited` for the limited information or `full` for the rich information
 
-### Respond API
+### Response API
+If you choose `limited`, the response API will be as the following output
 ```
 {
-    "message": "",
+    "message": "success",
+    "errors": [],    
     "data": {
-        "ID 1" : {
+        "1234567891234567": false
+    },
+    "summary": {
+        "number": 1,
+        "number_processed": 1,
+        "error": 0,
+        "valid": {
+            "all_section": 0,
+            "section": {
+                "length": 1,
+                "area": 0,
+                "dob": 0,
+                "gender": 1,
+                "computerized": 1
+            }
+        }
+    }
+}
+```
+If you choose `full`, the response API will be as the following output
+```
+{
+    "message": "success",
+    "errors": [],
+    "data": {
+        "1234567891234567": {
             "data": {
                 "length": {
-                    "value": "",
-                    "valid": ""
+                    "value": "1234567891234567",
+                    "valid": true
                 },
                 "area": {
                     "value": {
-                        "province": "",
-                        "district": "",
-                        "subdistrict": ""
+                        "province": "None",
+                        "district": "None",
+                        "subdistrict": "None"
                     },
-                    "valid": ""
+                    "valid": false
                 },
                 "dob": {
                     "value": {
-                        "dob": "",
-                        "age": ""
-
-                    },
-                    "valid": ""
+                        "dob": "None", 
+                        "age": "None"
+                    }, 
+                    "valid": false
                 },
-                "sex": {
-                    "value": "",
-                    "valid": ""
+                "gender": {
+                    "value": "Woman", 
+                    "valid": true
                 },
                 "computerized": {
-                    "value": "",
-                    "valid": ""
+                    "value": "4567", 
+                    "valid": true
                 }
             },
-            "valid": ""
+            "valid": false
         }
     },
     "summary": {
-        "number": "",
-        "number_processed": "",
-        "error": "",
-        "valid_number": "",
+        "number": 1,
+        "number_processed": 1,
+        "error": 0,
         "valid": {
-            "all_section": "",
+            "all_section": 0,
             "section": {
-                "length": "",
-                "area": "",
-                "dob": "",
-                "gender": "",
-                "computerized": ""
+                "length": 1,
+                "area": 0,
+                "dob": 0,
+                "gender": 1,
+                "computerized": 1
+            }
         }
     }
+}
+```
+But, if something error in the process, the following response will appear.
+```
+{
+    "message": "failed",
+    "data": [
+        "1234567891234567"
+    ]
 }
 ```
