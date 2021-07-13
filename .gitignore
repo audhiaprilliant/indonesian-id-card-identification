@@ -1,0 +1,7 @@
+__pycache__/*.pyc
+src/__pycache__/*.pyc
+src/data/__pycache__/*.pyc
+src/utils/__pycache__/*.pyc
+.ipynb_checkpoints/*
+notebook/.ipynb_checkpoints/*
+.vscode/*
